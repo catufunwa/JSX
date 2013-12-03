@@ -2124,7 +2124,7 @@ class Parser {
 			} while (token.getValue() == ",");
 		}
 		// parse return type
-		if (this._expect("->") == null)
+		if (this._expect(["->", "=>"]) == null)
 			return null;
 		var returnType = this._typeDeclaration(true);
 		if (returnType == null)
@@ -3104,7 +3104,7 @@ class Parser {
 			if ((returnType = this._typeDeclaration(true)) == null)
 				return null;
 		}
-		if (this._expect("->") == null)
+		if (this._expect(["->", "=>"]) == null)
 			return null;
 		var funcDef = this._functionBody(token, null, null, args, returnType, this._expectOpt("{") != null);
 		if (funcDef == null)
